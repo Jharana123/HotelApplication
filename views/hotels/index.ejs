@@ -1,0 +1,42 @@
+
+<%- include('../partials/header.ejs') %>
+<link rel="stylesheet" href="/stylesheets/main.css">
+
+<div style="margin-left: 500px;margin-top: 17px;">
+    <div class="row">
+        <div class="col-4">
+            <div class="input-group mb-3">
+                <span class="input-group-text" id="basic-addon1">@</span>
+                <input type="text" class="form-control" placeholder="Search Hotel" aria-label="Username"
+                    aria-describedby="basic-addon1" id="searchInput" onkeyup="searchHotel()">
+            </div>
+        </div>
+    </div>
+    </div>
+        <h1 style="margin-left: 400px;">list of all hotels</h1>
+    <div class="container text-center mb-4">
+        <div class="row">
+            <% for(let hotel of hotels.docs) { %>
+                <div class="col-4 mt-4 mb-4">
+                    <div class="card" style="width: 18rem;">
+                        <img src="<%=hotel.images[0].url %>" class="card-img-top" height="200px">
+                        <div class="card-body">
+                            <h5 class="card-title">
+                                <%= hotel.name %>
+                            </h5>
+                            <p class="card-text" style="color:black;">
+                                <%= hotel.name %> is an Special Hotel of StaySense. At StaySense we know the value of
+                                    customer and always apperciate the feedback of customer
+                            </p>
+                            <a href="/hotels/<%= hotel._id %>" class="btn btn-primary">Read More</a>
+                        </div>
+                    </div>
+                </div>
+                <% } %>
+        </div>
+    </div>
+
+    
+        <div style="margin-left: 500px;"><%- include('../partials/paginate.ejs') %></div>
+            <script src="/scripts/app.js"></script>
+            <%- include('../partials/footer.ejs') %>
